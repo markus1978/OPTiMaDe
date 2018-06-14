@@ -14,22 +14,34 @@ const definitionToJsonSchema = (definition) => {
     }
   }
 }
+const dataTypeToJsonSchema = (type) => {
+  if (type === 'int') {
+    return 'integer'
+  } else {
+    return type
+  }
+}
+
 const valueToJsonSchema = (definition) => {
   const dimensions = definition.miJson.meta_dimension
+  let {description} = definition
+  if (Array.isArray(description)) {
+    description = description.join(" ")
+  }
   if (dimensions) {
     return ({
       title: definition.name,
-      description: definition.description,
+      description: description,
       type: 'array',
       items: {
-        type: definition.miJson.meta_data_type
+        type: dataTypeToJsonSchema(definition.miJson.meta_data_type)
       }
     })
   } else {
     return ({
       title: definition.name,
-      description: definition.description,
-      type: definition.miJson.meta_data_type
+      description: description,
+      type: dataTypeToJsonSchema(definition.miJson.meta_data_type)
     })
   }
 }
@@ -37,7 +49,7 @@ const valueToJsonSchema = (definition) => {
 const sectionToJsonSchema = (definition) => ({
     type: "object",
     title: definition.name,
-    description: definition.description,
+    description: definition.description.join(" "),
     properties: definition.features
       .map(definitionToJsonSchema)
       .toObject(),
@@ -58,13 +70,18 @@ Array.prototype.toObject = function() {
 
 const jsonSchema = {
   "$schema": "http://json-schema.org/draft-06/schema#",
-  "type": "object",
-  "title": dict.name,
-  "description": dict.description,
-  "properties": dict.definitions
+  "definitions": dict.definitions
     .filter(schema.isSection)
     .map(definitionToJsonSchema)
     .toObject()
 }
 
-console.log(JSON.stringify(jsonSchema, null, 2))
+var fs = require('fs')
+fs.writeFile("optimade-schema.json", JSON.stringify(jsonSchema, null, 2), function(err) {
+    if(err) {
+        return console.log(err)
+    }
+    console.log(JSON.stringify(jsonSchema, null, 2))
+});
+
+

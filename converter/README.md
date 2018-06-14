@@ -10,6 +10,7 @@
 ```
 npm install
 npm run converter
+npm run validate
 ```
 
 or
@@ -17,6 +18,7 @@ or
 ```
 yarn
 yarn run converter
+yarn run validate
 ```
 
 Will read [../schema/optimade.nomadmetainfo.json](../schema/optimade.nomadmetainfo.json) and write JSON schema to stdout.

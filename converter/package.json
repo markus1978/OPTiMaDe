@@ -4,10 +4,12 @@
   "description": "",
   "main": "converter.js",
   "scripts": {
-    "converter": "babel-node --presets es2015 converter.js"
+    "converter": "babel-node --presets es2015 converter.js",
+    "validate": "ajv validate -s json-schema-draft7.json -d optimade-schema.json"
   },
   "dependencies": {
-    "babel-preset-es2015": "^6.0.0",
-    "babel-cli": "^6.26.0"
+    "ajv-cli": "^3.0.0",
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.0.0"
   }
 }
