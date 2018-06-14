@@ -1,0 +1,13 @@
+{
+  "name": "metainfo-json-schema-converter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "converter.js",
+  "scripts": {
+    "converter": "babel-node --presets es2015 converter.js"
+  },
+  "dependencies": {
+    "babel-preset-es2015": "^6.0.0",
+    "babel-cli": "^6.26.0"
+  }
+}

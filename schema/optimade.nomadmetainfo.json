@@ -1,0 +1,81 @@
+{
+  "type": "nomad_meta_info 2.0",
+  "meta_type": "meta_dictionary",
+  "metadict_name": ["optimade"],
+  "metadict_description": ["schema for the optimade 0.9.5 specification"],
+  "metadict_version": "0.9.5",
+  "metadict_require": [],
+  "meta_info_entry": [
+      {
+        "meta_name": "structure",
+        "meta_type": "type-section",
+        "meta_description": [
+          "Structure entries have the properties described above in ",
+          "'Properties Used by Multiple Entry Types'"
+        ]
+      },
+      {
+        "meta_name": "elements",
+        "meta_type": "type-value",
+        "meta_data_type": "string",
+        "meta_dimension": {
+          "meta_dimension_symbolic": "nelements"
+        },
+        "meta_parent_section": "structure",
+        "meta_description": [
+          "Names of elements found in the structure."
+        ],
+        "meta_required": true
+      },
+      {
+        "meta_name": "nelements",
+        "meta_type": "type-dimension",
+        "meta_data_type": "int",
+        "meta_parent_section": "structure",
+        "meta_description": [
+          "The number of elements found in a structure."
+        ],
+        "meta_required": true
+      },
+      {
+        "meta_name": "chemical_formula",
+        "meta_type": "type-value",
+        "meta_data_type": "string",
+        "meta_parent_section": "structure",
+        "meta_description": [
+          "The chemical formula for a structure."
+        ]
+      },
+      {
+        "meta_name": "formula_prototype",
+        "meta_type": "type-value",
+        "meta_data_type": "string",
+        "meta_parent_section": "structure",
+        "meta_description": [
+          "The formula prototype obtained by sorting elements by the occurrence number in the reduced chemical formula ",
+          "and replace them with subsequent alphabet letters A, B, C and so on."
+        ]
+      },
+
+      {
+        "meta_name": "calculation",
+        "meta_type": "type-section",
+        "meta_description": [
+        ]
+      },
+      {
+        "meta_name": "id",
+        "meta_type": "type-value",
+        "meta_desciption": "An entry's ID.",
+        "meta_data_type": "string",
+        "meta_parent_section": "structure"
+      },
+      {
+        "meta_name": "modification_date",
+        "meta_type": "type-value",
+        "meta_desciption": "A date representing when the entry was last modified.",
+        "meta_data_type": "string",
+        "meta_parent_section": "structure"
+      }
+    ]
+}
